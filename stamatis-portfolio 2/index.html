@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  STAMATIS PSAROS — PORTFOLIO
+  index.html  ·  structure & content
+
+  Files:
+    index.html      → content (edit text, links, projects here)
+    css/style.css   → design tokens, layout, components
+    js/main.js      → animations, smooth scroll, cursor, form
+
+  Quick edits:
+    • Projects ........ search "PROJECT:" below
+    • Process steps .... search "STEP:"
+    • Contact details .. search "CONTACT DETAILS"
+    • Colours/fonts .... css/style.css → section 1 (Design tokens)
+    • Email / timezone . js/main.js → CONFIG at the top
+  ============================================================================
+-->
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Stamatis Psaros | Web developer in Chios, Greece</title>
+  <meta name="description" content="Stamatis Psaros designs and builds fast, hand-coded websites, digital menus and web apps for restaurants, hotels and brands. Based in Chios, Greece, working worldwide.">
+  <meta name="theme-color" content="#F6F3ED">
+
+  <!-- Social share preview (replace og:image with a 1200×630 screenshot of your site) -->
+  <meta property="og:title" content="Stamatis Psaros | Web developer">
+  <meta property="og:description" content="Fast, hand-coded websites, digital menus and web apps.">
+  <meta property="og:type" content="website">
+  <!-- <meta property="og:image" content="https://YOUR-DOMAIN/assets/og.jpg"> -->
+
+  <!-- Favicon: the xysta triangle mark (inline SVG, no file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23141413'/%3E%3Ccircle cx='16' cy='9' r='2.6' fill='%23F6F3ED'/%3E%3Cpath d='M6 25 16 14l10 11Z' fill='%23F6F3ED'/%3E%3C/svg%3E">
+
+  <!-- Flip "no-js" to "js" before paint so animation start-states only apply when JS runs -->
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+
+  <!-- Font: Archivo variable (width 62–125 + weight 100–900). One family, three widths. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- =====================================================================
+       LOADER — counter + xysta band, then lifts to reveal the hero
+       ===================================================================== -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__band xysta"></div>
+    <div class="loader__row">
+      <span class="loader__name">Stamatis Psaros<br>Web developer, Chios</span>
+      <span class="loader__count js-count">0</span>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       CUSTOM CURSOR (desktop only — hidden automatically on touch devices)
+       ===================================================================== -->
+  <div class="cursor is-hidden" aria-hidden="true">
+    <div class="cursor__ring"><span class="cursor__label">View</span></div>
+    <div class="cursor__dot"></div>
+  </div>
+
+  <!-- =====================================================================
+       NAVIGATION
+       ===================================================================== -->
+  <header class="nav">
+    <a href="#top" class="nav__logo" data-magnetic="0.25" aria-label="Stamatis Psaros, back to top">
+      <svg class="nav__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+      <span>Stamatis Psaros</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a href="#contact" class="nav__status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Available for new projects
+    </a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="nav__toggle-label">Menu</span>
+    </button>
+
+    <span class="nav__progress" aria-hidden="true"></span>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="menu" id="menu" aria-hidden="true" inert>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#work" style="--i:0"><span>Work</span></a>
+      <a href="#process" style="--i:1"><span>Process</span></a>
+      <a href="#contact" style="--i:2"><span>Contact</span></a>
+    </nav>
+    <div class="menu__foot">
+      <a href="mailto:stamatispsoras@gmail.com">stamatispsoras@gmail.com</a>
+      <span><span class="status-dot" aria-hidden="true"></span> Available for new projects</span>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ===================================================================
+         1. HERO
+         =================================================================== -->
+    <section class="hero" id="top">
+      <div class="hero__meta">
+        <p>Independent web developer</p>
+        <p>Chios, Greece<br>38.37° N, 26.13° E</p>
+        <p>Local time <span class="js-clock">--:--</span></p>
+      </div>
+
+      <!-- The name is split into letters by JS. aria-label keeps it readable for screen readers. -->
+      <h1 class="hero__title" aria-label="Stamatis Psaros, web developer">
+        <span class="hero__line"><span class="hero__word">Stamatis</span></span>
+        <span class="hero__line hero__line--right"><span class="hero__word">Psaros</span></span>
+      </h1>
+
+      <div class="hero__foot">
+        <p class="hero__lead">I design and build fast, hand-coded websites for restaurants, hotels and brands that want to stand out. From Chios, for clients anywhere.</p>
+
+        <div class="hero__ctas">
+          <a href="#contact" class="btn btn--primary" data-magnetic>
+            <span class="btn__inner"><span class="btn__roll" data-text="Start a project">Start a project</span></span>
+          </a>
+          <a href="#work" class="btn btn--ghost" data-magnetic>
+            <span class="btn__inner"><span class="btn__roll" data-text="See the work">See the work</span></span>
+          </a>
+        </div>
+
+        <div class="hero__scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         2. MARQUEE — speeds up and changes direction with your scroll
+         =================================================================== -->
+    <section class="marquee" aria-label="Services">
+      <div class="xysta" data-shift="-220"></div>
+      <div class="marquee__viewport">
+        <div class="marquee__track">
+          <!-- Group is duplicated for a seamless loop. Keep both identical. -->
+          <div class="marquee__group">
+            <span class="marquee__item">Websites</span><svg class="marquee__sep" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+            <span class="marquee__item marquee__item--outline">Digital menus</span><svg class="marquee__sep" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+            <span class="marquee__item">Guest guides</span><svg class="marquee__sep" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+            <span class="marquee__item marquee__item--outline">Web apps</span><svg class="marquee__sep" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+          </div>
+          <div class="marquee__group" aria-hidden="true">
+            <span class="marquee__item">Websites</span><svg class="marquee__sep" viewBox="0 0 32 32"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+            <span class="marquee__item marquee__item--outline">Digital menus</span><svg class="marquee__sep" viewBox="0 0 32 32"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+            <span class="marquee__item">Guest guides</span><svg class="marquee__sep" viewBox="0 0 32 32"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+            <span class="marquee__item marquee__item--outline">Web apps</span><svg class="marquee__sep" viewBox="0 0 32 32"><circle cx="16" cy="8" r="3"/><path d="M4 28 16 14l12 14Z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="xysta" data-shift="220"></div>
+    </section>
+
+    <!-- ===================================================================
+         3. INTRO — words fill in as you scroll
+         =================================================================== -->
+    <section class="intro" aria-label="About">
+      <p class="intro__aside" data-reveal>Graduate programmer specialising in web development. Every site is designed and coded by me, start to finish.</p>
+      <p class="intro__text" data-scrub-text>Most businesses are better than their websites. I close that gap with sites that load in a blink, look sharp on every phone and turn visitors into bookings, orders and calls.</p>
+    </section>
+
+    <!-- ===================================================================
+         4. SERVICES — each row links to the form and pre-selects that service
+         =================================================================== -->
+    <section class="services" aria-labelledby="services-title">
+      <div class="services__head">
+        <h2 class="section-title" id="services-title" data-split>What I build</h2>
+        <p class="services__note" data-reveal>Pick one to start the conversation.</p>
+      </div>
+
+      <ul class="services__list" data-reveal-group>
+        <li>
+          <a class="service" href="#contact" data-service="Website">
+            <h3 class="service__name">Websites &amp; landing pages</h3>
+            <p class="service__desc">Custom-designed, hand-coded sites with motion that feels expensive and pages that load fast.</p>
+            <span class="service__tags">Design, development, SEO</span>
+          </a>
+        </li>
+        <li>
+          <a class="service" href="#contact" data-service="Digital menu">
+            <h3 class="service__name">Digital QR menus</h3>
+            <p class="service__desc">Multilingual menus guests open at the table. Change a price in seconds, never reprint again.</p>
+            <span class="service__tags">Restaurants, bars, cafés</span>
+          </a>
+        </li>
+        <li>
+          <a class="service" href="#contact" data-service="Guest guide">
+            <h3 class="service__name">Guest guides for rentals</h3>
+            <p class="service__desc">Wi-Fi, check-in, house rules and local tips, answered before your guests have to message you.</p>
+            <span class="service__tags">Airbnb, villas, hotels</span>
+          </a>
+        </li>
+        <li>
+          <a class="service" href="#contact" data-service="Web app">
+            <h3 class="service__name">Web apps &amp; tools</h3>
+            <p class="service__desc">Booking flows, dashboards, loyalty systems and custom tools on a modern stack.</p>
+            <span class="service__tags">React, Next.js, Supabase</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===================================================================
+         5. WORK — horizontal pinned scroll on desktop, stacked on mobile
+         -------------------------------------------------------------------
+         Each project's visual is a lightweight CSS mockup. To use a real
+         screenshot instead, replace everything inside .project__inner with:
+           <img src="assets/your-shot.jpg" alt="Describe the screenshot" loading="lazy">
+         Change a card's background colour with the --panel value.
+         data-cursor="View" sets the custom cursor label on hover.
+         =================================================================== -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="work__pin">
+        <div class="work__track">
+
+          <div class="work__head">
+            <h2 class="section-title" id="work-title" data-split>Selected work</h2>
+            <p class="work__intro" data-reveal>Recent builds for a restaurant, a lounge bar, a holiday rental and a product of my own.</p>
+            <p class="work__hint" aria-hidden="true">Keep scrolling</p>
+          </div>
+
+          <!-- PROJECT: ChiBao -->
+          <article class="project" data-cursor="View">
+            <a class="project__link" href="#" target="_blank" rel="noopener"><!-- ← put the live URL here -->
+              <div class="project__media" style="--panel:#1D211F">
+                <div class="project__inner" aria-hidden="true">
+                  <div class="mock mock--chibao">
+                    <div class="mock-phone mock-phone--back">
+                      <div class="mock-phone__screen cb-landing">
+                        <b class="cb-landing__logo">ChiBao</b>
+                        <span class="cb-landing__dish"></span>
+                        <span class="cb-landing__lines"><i></i><i></i></span>
+                      </div>
+                    </div>
+                    <div class="mock-phone mock-phone--front">
+                      <div class="mock-phone__screen cb-menu">
+                        <div class="cb-menu__head"><b>ChiBao</b><span class="pills"><i class="on">EN</i><i>EL</i><i>TR</i></span></div>
+                        <div class="cb-menu__tabs"><i class="on"></i><i></i><i></i></div>
+                        <div class="cb-item"><span class="cb-item__img" style="--c:#8E3B2F"></span><span class="cb-item__txt"><i></i><i></i></span><b>12</b></div>
+                        <div class="cb-item"><span class="cb-item__img" style="--c:#D9CDB6"></span><span class="cb-item__txt"><i></i><i></i></span><b>9</b></div>
+                        <div class="cb-item"><span class="cb-item__img" style="--c:#43603F"></span><span class="cb-item__txt"><i></i><i></i></span><b>14</b></div>
+                        <div class="cb-item"><span class="cb-item__img" style="--c:#2E2A27"></span><span class="cb-item__txt"><i></i><i></i></span><b>11</b></div>
+                        <div class="cb-item"><span class="cb-item__img" style="--c:#A35A3E"></span><span class="cb-item__txt"><i></i><i></i></span><b>8</b></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project__info">
+                <h3 class="project__title">ChiBao</h3>
+                <span class="project__year">2026</span>
+                <p class="project__desc">A trilingual QR menu guests open at the table, plus a 3D scroll landing page that plates the food before they arrive.</p>
+                <ul class="project__tags"><li>QR menu</li><li>Three.js</li><li>GSAP</li><li>Netlify</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <!-- PROJECT: AURA Lounge  (edit the description to match the real brief) -->
+          <article class="project" data-cursor="View">
+            <a class="project__link" href="#" target="_blank" rel="noopener">
+              <div class="project__media" style="--panel:#2B2E35">
+                <div class="project__inner" aria-hidden="true">
+                  <div class="mock mock--aura">
+                    <div class="mock-browser">
+                      <div class="mock-browser__bar"><i></i><i></i><i></i><span></span></div>
+                      <div class="mock-browser__screen aura">
+                        <div class="aura__nav"><b>AURA</b><span><i></i><i></i><i></i></span></div>
+                        <span class="aura__ring"></span>
+                        <b class="aura__word">AURA</b>
+                        <span class="aura__sub"><i></i><i></i></span>
+                        <span class="aura__btn">Book a table</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project__info">
+                <h3 class="project__title">AURA Lounge</h3>
+                <span class="project__year">2026</span>
+                <p class="project__desc">A moody, fast-loading website for a lounge bar: events, menu and table bookings in a single scroll.</p>
+                <ul class="project__tags"><li>Website</li><li>Digital menu</li><li>Mobile-first</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <!-- PROJECT: Karfas Hideaway -->
+          <article class="project" data-cursor="View">
+            <a class="project__link" href="#" target="_blank" rel="noopener">
+              <div class="project__media" style="--panel:#B4BEAE">
+                <div class="project__inner" aria-hidden="true">
+                  <div class="mock mock--karfas">
+                    <div class="mock-phone">
+                      <div class="mock-phone__screen kh">
+                        <div class="kh__photo"><span class="kh__sun"></span><b class="kh__title">Karfas<br>Hideaway</b></div>
+                        <div class="pills kh__langs"><i class="on">EN</i><i>EL</i><i>TR</i></div>
+                        <div class="kh__card"><span class="kh__icon"></span><span class="kh__lines"><i></i><i></i></span><em>Copy</em></div>
+                        <div class="kh__card"><span class="kh__icon"></span><span class="kh__lines"><i></i><i></i></span></div>
+                        <div class="kh__card"><span class="kh__icon"></span><span class="kh__lines"><i></i><i></i></span></div>
+                      </div>
+                    </div>
+                    <div class="kh__toast"><span class="status-dot"></span>Wi-Fi password copied</div>
+                  </div>
+                </div>
+              </div>
+              <div class="project__info">
+                <h3 class="project__title">Karfas Hideaway</h3>
+                <span class="project__year">2026</span>
+                <p class="project__desc">A cinematic guest guide for a holiday home, opened from a QR code: trilingual welcome, house rules, local tips and one-tap Wi-Fi.</p>
+                <ul class="project__tags"><li>Guest guide</li><li>EN / EL / TR</li><li>QR</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <!-- PROJECT: PistoPass -->
+          <article class="project" data-cursor="View">
+            <a class="project__link" href="#" target="_blank" rel="noopener">
+              <div class="project__media" style="--panel:#D6CFC2">
+                <div class="project__inner" aria-hidden="true">
+                  <div class="mock mock--pisto">
+                    <div class="pass pass--3"></div>
+                    <div class="pass pass--2"></div>
+                    <div class="pass pass--1">
+                      <div class="pass__head"><b>PistoPass</b><span>Loyalty card</span></div>
+                      <div class="pass__label">Stamps</div>
+                      <div class="pass__stamps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
+                      <div class="pass__foot"><span class="pass__qr"></span><span class="pass__meta"><i></i><i></i></span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="project__info">
+                <h3 class="project__title">PistoPass</h3>
+                <span class="project__year">In development</span>
+                <p class="project__desc">Digital loyalty cards that live in Apple and Google Wallet. No app to download, no paper card to lose.</p>
+                <ul class="project__tags"><li>Next.js</li><li>Supabase</li><li>Wallet passes</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <!-- End panel -->
+          <div class="work__end">
+            <p class="work__end-title">Your project could be the next one here.</p>
+            <a href="#contact" class="btn btn--primary" data-magnetic>
+              <span class="btn__inner"><span class="btn__roll" data-text="Start a project">Start a project</span></span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         6. PROCESS — sticky side panel + steps that activate as you scroll
+         =================================================================== -->
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="process__grid">
+
+        <div class="process__side">
+          <h2 class="section-title" id="process-title" data-split>How a project runs</h2>
+          <p class="process__intro" data-reveal>Four clear stages, from the first call to launch day. You always know what happens next.</p>
+
+          <div class="process__counter" aria-hidden="true">
+            <span class="process__num-wrap"><span class="process__nums"><span>01</span><span>02</span><span>03</span><span>04</span></span></span>
+            <span class="process__total">/04</span>
+          </div>
+          <div class="process__bar" aria-hidden="true"><span></span></div>
+          <ol class="process__nav" aria-hidden="true">
+            <li class="is-active">Concept, strategy &amp; design</li>
+            <li>Development &amp; coding</li>
+            <li>Testing &amp; quality assurance</li>
+            <li>Going live &amp; support</li>
+          </ol>
+        </div>
+
+        <div class="process__steps">
+          <span class="process__rail" aria-hidden="true"><span></span></span>
+
+          <!-- STEP: 1 -->
+          <article class="step">
+            <svg class="step__art" viewBox="0 0 200 140" aria-hidden="true">
+              <path pathLength="1" d="M10 12H190V128H10Z"/>
+              <path pathLength="1" d="M10 30H190"/>
+              <path pathLength="1" d="M20 21a2 2 0 1 0 4 0a2 2 0 1 0-4 0M30 21a2 2 0 1 0 4 0a2 2 0 1 0-4 0M40 21a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/>
+              <path pathLength="1" d="M24 44H96V92H24Z"/>
+              <path pathLength="1" d="M24 92 48 66 62 80 76 68 96 88"/>
+              <path pathLength="1" d="M110 50H176M110 62H166M110 74H150"/>
+              <path pathLength="1" d="M110 84H142V94H110Z"/>
+              <path pathLength="1" d="M24 106H176V116H24Z"/>
+            </svg>
+            <span class="step__num">Step 01</span>
+            <h3 class="step__title">Concept, strategy &amp; design</h3>
+            <p class="step__text">We start with a call about your business, your customers and what the site needs to achieve. I map the pages, plan the content and design every screen before a line of code is written. You approve the design first.</p>
+            <ul class="step__list"><li>Discovery call</li><li>Sitemap &amp; wireframes</li><li>Full visual design</li></ul>
+            <p class="step__time">Typically week 1</p>
+          </article>
+
+          <!-- STEP: 2 -->
+          <article class="step">
+            <svg class="step__art" viewBox="0 0 200 140" aria-hidden="true">
+              <path pathLength="1" d="M16 14H184V126H16Z"/>
+              <path pathLength="1" d="M16 30H184"/>
+              <path pathLength="1" d="M26 22a2 2 0 1 0 4 0a2 2 0 1 0-4 0M36 22a2 2 0 1 0 4 0a2 2 0 1 0-4 0M46 22a2 2 0 1 0 4 0a2 2 0 1 0-4 0"/>
+              <path pathLength="1" d="M66 50 44 72 66 94"/>
+              <path pathLength="1" d="M134 50 156 72 134 94"/>
+              <path pathLength="1" d="M112 44 88 100"/>
+              <path pathLength="1" d="M36 112H92M100 112H124M132 112H164"/>
+            </svg>
+            <span class="step__num">Step 02</span>
+            <h3 class="step__title">Development &amp; coding</h3>
+            <p class="step__text">I build the approved design into a fast, hand-coded site: responsive on every screen, animated where it helps, and simple for you to update. You get a private preview link to follow along.</p>
+            <ul class="step__list"><li>Clean, hand-written code</li><li>Responsive on every device</li><li>SEO foundations</li></ul>
+            <p class="step__time">Typically weeks 2–3</p>
+          </article>
+
+          <!-- STEP: 3 -->
+          <article class="step">
+            <svg class="step__art" viewBox="0 0 200 140" aria-hidden="true">
+              <path pathLength="1" d="M26 24H134V96H26Z"/>
+              <path pathLength="1" d="M26 96 16 108H144L134 96"/>
+              <path pathLength="1" d="M150 48H182V120H150Z"/>
+              <path pathLength="1" d="M160 112H172"/>
+              <path pathLength="1" d="M60 60a20 20 0 1 0 40 0a20 20 0 1 0-40 0"/>
+              <path pathLength="1" d="M70 60 77 68 91 52"/>
+            </svg>
+            <span class="step__num">Step 03</span>
+            <h3 class="step__title">Testing &amp; quality assurance</h3>
+            <p class="step__text">Every page is checked on real phones, tablets and browsers. I test speed, forms, accessibility and search basics, and fix what I find, so nothing breaks on launch day.</p>
+            <ul class="step__list"><li>Cross-device testing</li><li>Speed &amp; Lighthouse audit</li><li>Accessibility checks</li></ul>
+            <p class="step__time">Typically a few days</p>
+          </article>
+
+          <!-- STEP: 4 -->
+          <article class="step">
+            <svg class="step__art" viewBox="0 0 200 140" aria-hidden="true">
+              <path pathLength="1" d="M60 70a40 40 0 1 0 80 0a40 40 0 1 0-80 0"/>
+              <path pathLength="1" d="M100 30C80 46 80 94 100 110M100 30C120 46 120 94 100 110"/>
+              <path pathLength="1" d="M60 70H140M66 50H134M66 90H134"/>
+              <path pathLength="1" d="M34 96C66 126 150 114 172 56"/>
+              <path pathLength="1" d="M168 46a5 5 0 1 0 10 0a5 5 0 1 0-10 0"/>
+              <path pathLength="1" d="M156 18a24 24 0 0 1 24 24M156 8a34 34 0 0 1 34 34"/>
+            </svg>
+            <span class="step__num">Step 04</span>
+            <h3 class="step__title">Going live &amp; support</h3>
+            <p class="step__text">I connect your domain, launch the site and make sure Google can find it. After launch I stay on hand for questions, updates and fixes, so you're never left alone with it.</p>
+            <ul class="step__list"><li>Domain &amp; hosting setup</li><li>Analytics</li><li>30 days of free support</li></ul>
+            <p class="step__time">Launch day, then ongoing</p>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         7. CONTACT + FOOTER
+         -------------------------------------------------------------------
+         The form works out of the box on Netlify (data-netlify="true").
+         On other hosts it falls back to opening the visitor's email app,
+         pre-filled and addressed to CONFIG.email in js/main.js.
+         =================================================================== -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__cta">
+        <h2 class="contact__title" id="contact-title" data-split>Let's build something people remember.</h2>
+        <a class="contact__email" href="mailto:stamatispsoras@gmail.com" data-reveal>stamatispsoras@gmail.com</a>
+      </div>
+
+      <div class="contact__grid">
+        <div class="contact__info" data-reveal>
+          <p>Tell me about your business and what you need. I reply within one working day, with honest advice even if we don't end up working together.</p>
+
+          <!-- CONTACT DETAILS -->
+          <dl class="contact__details">
+            <div><dt>Email</dt><dd><a href="mailto:stamatispsoras@gmail.com">stamatispsoras@gmail.com</a></dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+306989483902">+30 698 948 3902</a></dd></div>
+            <div><dt>Based in</dt><dd>Chios, Greece. Working worldwide.</dd></div>
+          </dl>
+
+          <!-- Replace # with your profile URLs, or delete a link -->
+          <ul class="socials">
+            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+
+        <form class="form js-contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-reveal>
+          <input type="hidden" name="form-name" value="contact">
+          <p class="visually-hidden"><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+          <fieldset>
+            <legend>What do you need?</legend>
+            <div class="chips">
+              <label class="chip"><input type="checkbox" name="services" value="Website"><span>Website</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Digital menu"><span>Digital menu</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Guest guide"><span>Guest guide</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Web app"><span>Web app</span></label>
+              <label class="chip"><input type="checkbox" name="services" value="Something else"><span>Something else</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form__row">
+            <div class="field">
+              <input id="f-name" name="name" type="text" autocomplete="name" required placeholder=" ">
+              <label for="f-name">Your name</label>
+            </div>
+            <div class="field">
+              <input id="f-email" name="email" type="email" autocomplete="email" required placeholder=" ">
+              <label for="f-email">Email</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <textarea id="f-message" name="message" rows="4" required placeholder=" "></textarea>
+            <label for="f-message">Tell me about the project</label>
+          </div>
+
+          <fieldset>
+            <legend>Budget</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="budget" value="Under €1,000"><span>Under €1,000</span></label>
+              <label class="chip"><input type="radio" name="budget" value="€1,000–3,000"><span>€1,000–3,000</span></label>
+              <label class="chip"><input type="radio" name="budget" value="€3,000+"><span>€3,000+</span></label>
+              <label class="chip"><input type="radio" name="budget" value="Not sure yet"><span>Not sure yet</span></label>
+            </div>
+          </fieldset>
+
+          <div class="form__submit">
+            <button type="submit" class="btn btn--primary btn--lg" data-magnetic>
+              <span class="btn__inner"><span class="btn__roll" data-text="Send message">Send message</span></span>
+            </button>
+            <p class="form__status" role="status" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+
+      <footer class="footer">
+        <div class="xysta xysta--full" data-shift="160"></div>
+        <div class="footer__row">
+          <span>© <span class="js-year">2026</span> Stamatis Psaros</span>
+          <span>Designed and coded on Chios</span>
+          <span>Chios <span class="js-clock">--:--</span></span>
+          <span class="footer__credit">Pattern after the xysta façades of Pyrgi, Chios</span>
+          <a href="#top" class="footer__top" data-magnetic="0.3">Back to top</a>
+        </div>
+      </footer>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       SCRIPTS — GSAP + ScrollTrigger (animation), Lenis (smooth scroll)
+       All deferred: they run in order after the page is parsed.
+       ===================================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
